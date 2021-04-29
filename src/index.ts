@@ -1,5 +1,9 @@
 import "./styles/index.scss"
 
-const a = 2
-const b = 2
-console.log(a + b)
+import Keyboard from "./components/Keyboard"
+
+export {
+  DefaultKeyboardLayout
+} from "./layouts/default"
+
+export default Keyboard
