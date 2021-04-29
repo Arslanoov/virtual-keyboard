@@ -15,8 +15,19 @@ export interface KeyboardLayoutButtonInterface {
   isMetaKey: boolean
 }
 
+export interface KeyboardLayoutStyle {
+  button: {
+    width: string,
+    height: string,
+    borderRadius: string
+  }
+}
+
 export interface KeyboardLayoutInterface {
   columnsCount: number,
   rowsCount: number,
-  buttons: KeyboardLayoutButtonInterface[]
+  columnGap: string,
+  rowGap: string,
+  buttons: KeyboardLayoutButtonInterface[],
+  style: KeyboardLayoutStyle
 }

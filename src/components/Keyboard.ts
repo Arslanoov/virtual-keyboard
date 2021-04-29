@@ -1,10 +1,5 @@
-import {
-  KeyboardConfig
-} from "../types"
-
-import {
-  addClasses
-} from "../helpers/classes"
+import { KeyboardConfig } from "../types"
+import { addStyles } from "../helpers/styles"
 
 class Keyboard {
   private config: KeyboardConfig
@@ -14,20 +9,40 @@ class Keyboard {
     this.config = config
     this.rendered = document.createElement("div")
     this.init()
-    this.renderLayout()
   }
 
   public init(): void {
     this.rendered.classList.add("a-virtual-keyboard")
-    addClasses(this.rendered, {
+    addStyles(this.rendered, {
       width: this.config.width,
       height: this.config.height
     })
+
+    this.renderLayout()
+    this.renderButtons()
   }
 
   private renderLayout(): void {
-    addClasses(this.rendered, {
-      display: "grid"
+    addStyles(this.rendered, {
+      display: "grid",
+      gridTemplateColumns: `repeat(${this.config.layout.columnsCount}, 1fr)`,
+      gridTemplateRows: `repeat(${this.config.layout.rowsCount}, 1fr)`,
+      rowGap: this.config.layout.rowGap,
+      columnGap: this.config.layout.columnGap
+    })
+  }
+  
+  private renderButtons(): void {
+    this.config.layout.buttons.forEach(button => {
+      const buttonElement = document.createElement("div")
+      buttonElement.classList.add("a-virtual-keyboard__button")
+      buttonElement.innerText = button.content
+      addStyles(buttonElement, {
+        width: this.config.layout.style.button.width,
+        height: this.config.layout.style.button.height,
+        borderRadius: this.config.layout.style.button.borderRadius
+      })
+      this.rendered.appendChild(buttonElement)
     })
   }
 

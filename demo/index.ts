@@ -1,7 +1,7 @@
 import Keyboard, { DefaultKeyboardLayout } from "../src/index"
 
 const keyboard = new Keyboard({
-  width: "700px",
+  width: "100%",
   height: "500px",
   layout: DefaultKeyboardLayout
 })

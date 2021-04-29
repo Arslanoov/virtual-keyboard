@@ -3,8 +3,17 @@ import {
 } from "../types"
 
 const DefaultKeyboardLayout: KeyboardLayoutInterface = {
-  columnsCount: 12,
-  rowsCount: 12,
+  columnsCount: 15,
+  rowsCount: 5,
+  columnGap: "5px",
+  rowGap: "5px",
+  style: {
+    button: {
+      width: "25px",
+      height: "25px",
+      borderRadius: "5px"
+    }
+  },
   buttons: [
     {
       columnSize: 1,
