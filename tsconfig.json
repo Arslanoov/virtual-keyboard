@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "outDir": "build/types",
+    "module": "esnext",
+    "target": "es5",
+    "allowJs": true,
+    "sourceMap": true,
+    "declaration": true,
+    "lib": ["es2020", "dom"],
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": ["src"]
+}
