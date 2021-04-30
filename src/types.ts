@@ -1,7 +1,7 @@
 // Keyboard
 export interface KeyboardConfig {
-  width: string,
-  height: string,
+  width?: string,
+  height?: string,
   layout: KeyboardLayoutInterface
 }
 
@@ -9,18 +9,31 @@ export interface KeyboardConfig {
 export interface KeyboardLayoutButtonInterface {
   columnSize: number,
   rowSize: number,
+  columnPosition: number,
+  rowPosition: number,
   code: string,
   content: string,
   isCtrlKey: boolean,
   isMetaKey: boolean
 }
 
+export interface KeyboardButtonStyle {
+  minWidth: string,
+  minHeight: string,
+  background?: string,
+  border: string,
+  borderRadius: string
+}
+
 export interface KeyboardLayoutStyle {
-  button: {
-    width: string,
-    height: string,
-    borderRadius: string
-  }
+  padding?: string,
+  background?: string,
+  border?: string,
+  borderTop?: string,
+  borderBottom?: string,
+  borderLeft?: string,
+  borderRight?: string,
+  button: KeyboardButtonStyle
 }
 
 export interface KeyboardLayoutInterface {
