@@ -6,10 +6,12 @@ import Button from "./Button"
 class Keyboard {
   private config: KeyboardConfig
   private readonly rendered: HTMLElement
+  private renderedButtons: Button[]
 
   constructor(config: KeyboardConfig) {
     this.config = config
     this.rendered = document.createElement("div")
+    this.renderedButtons = []
     this.init()
   }
 
@@ -22,6 +24,18 @@ class Keyboard {
 
     this.renderLayout()
     this.renderButtons()
+  }
+
+  public mount(selector: string): void {
+    const element: HTMLElement | null = document.querySelector(selector)
+    if (element) {
+      element.appendChild(this.rendered)
+    }
+  }
+
+  public destroy(): void {
+    document.removeEventListener("keypress", this.onButtonClick)
+    this.rendered.remove()
   }
 
   private renderLayout(): void {
@@ -43,18 +57,23 @@ class Keyboard {
     })
   }
 
+  private onButtonClick(e: KeyboardEvent): void {
+    const renderedButton = this.renderedButtons.find(button => button.code === e.code)
+    if (renderedButton) {
+      renderedButton.press()
+      this.config.layout.onButtonClick(e.code, renderedButton.content, renderedButton.isBackspace)
+    }
+  }
+
   private renderButtons(): void {
     this.config.layout.buttons.forEach(config => {
       const button = new Button(config, this.config.layout.style.button)
-      this.rendered.appendChild(button.render())
+      const renderedButton = button.render()
+      this.renderedButtons.push(button)
+      this.rendered.appendChild(renderedButton)
     })
-  }
 
-  public mount(selector: string): void {
-    const element: HTMLElement | null = document.querySelector(selector)
-    if (element) {
-      element.appendChild(this.rendered)
-    }
+    document.addEventListener("keydown", e => this.onButtonClick(e))
   }
 }
 

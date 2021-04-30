@@ -13,8 +13,9 @@ export interface KeyboardLayoutButtonInterface {
   rowPosition: number,
   code: string,
   content: string,
-  isCtrlKey: boolean,
-  isMetaKey: boolean
+  isCtrlKey?: boolean,
+  isMetaKey?: boolean,
+  isBackspace?: boolean
 }
 
 export interface KeyboardButtonStyle {
@@ -42,5 +43,6 @@ export interface KeyboardLayoutInterface {
   columnGap: string,
   rowGap: string,
   buttons: KeyboardLayoutButtonInterface[],
-  style: KeyboardLayoutStyle
+  style: KeyboardLayoutStyle,
+  onButtonClick: (code: string, content: string, isBackspace: boolean) => void
 }

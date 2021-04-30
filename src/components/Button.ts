@@ -6,12 +6,26 @@ import {
 } from "../types"
 
 class Button {
-  public config: KeyboardLayoutButtonInterface
-  public style: KeyboardButtonStyle
+  private config: KeyboardLayoutButtonInterface
+  private style: KeyboardButtonStyle
+  private element: HTMLElement | null
 
   constructor(config: KeyboardLayoutButtonInterface, style: KeyboardButtonStyle) {
     this.config = config
     this.style = style
+    this.element = null
+  }
+
+  public get code(): string {
+    return this.config.code
+  }
+
+  public get content(): string {
+    return this.config.content
+  }
+
+  public get isBackspace(): boolean {
+    return this.config.isBackspace ?? false
   }
 
   render(): HTMLElement {
@@ -26,7 +40,22 @@ class Button {
       background: this.style.background,
       borderRadius: this.style.borderRadius
     })
+    this.element = buttonElement
     return buttonElement
+  }
+
+  public press(): void {
+    if (!this.element) {
+      throw new Error("Button is not rendered")
+    }
+
+    addStyles(this.element, {
+      background: "blue"
+    })
+
+    window.setTimeout(() => addStyles(this.element as HTMLElement, {
+      background: this.style.background
+    }), 150)
   }
 }
 
