@@ -28,10 +28,11 @@ class Button {
     return this.config.isBackspace ?? false
   }
 
-  render(): HTMLElement {
+  public render(): HTMLElement {
     const buttonElement = document.createElement("div")
     buttonElement.classList.add("a-virtual-keyboard__button")
     buttonElement.innerText = this.config.content
+
     addStyles(buttonElement, {
       gridColumn: `${this.config.columnPosition} / span ${this.config.columnSize}`,
       gridRow: `${this.config.rowPosition} / span ${this.config.rowSize}`,
@@ -40,7 +41,9 @@ class Button {
       background: this.style.background,
       borderRadius: this.style.borderRadius
     })
+
     this.element = buttonElement
+
     return buttonElement
   }
 

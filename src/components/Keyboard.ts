@@ -34,7 +34,7 @@ class Keyboard {
   }
 
   public destroy(): void {
-    document.removeEventListener("keypress", this.onButtonClick)
+    document.removeEventListener("keypress", this.onButtonPress)
     this.rendered.remove()
   }
 
@@ -57,11 +57,19 @@ class Keyboard {
     })
   }
 
-  private onButtonClick(e: KeyboardEvent): void {
-    const renderedButton = this.renderedButtons.find(button => button.code === e.code)
-    if (renderedButton) {
-      renderedButton.press()
-      this.config.layout.onButtonClick(e.code, renderedButton.content, renderedButton.isBackspace)
+  private onButtonClick(code: string): void {
+    this.onButtonAction(code)
+  }
+
+  private onButtonPress(e: KeyboardEvent): void {
+    this.onButtonAction(e.code)
+  }
+
+  private onButtonAction(code: string): void {
+    const button = this.renderedButtons.find(button => button.code === code)
+    if (button) {
+      button.press()
+      this.config.layout.onButtonClick(button.code, button.content, button.isBackspace)
     }
   }
 
@@ -69,11 +77,12 @@ class Keyboard {
     this.config.layout.buttons.forEach(config => {
       const button = new Button(config, this.config.layout.style.button)
       const renderedButton = button.render()
+      renderedButton.addEventListener("click", () => this.onButtonClick(button.code))
       this.renderedButtons.push(button)
       this.rendered.appendChild(renderedButton)
     })
 
-    document.addEventListener("keydown", e => this.onButtonClick(e))
+    document.addEventListener("keydown", e => this.onButtonPress(e))
   }
 }
 
