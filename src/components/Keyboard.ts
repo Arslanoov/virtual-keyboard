@@ -77,7 +77,9 @@ class Keyboard {
     this.config.layout.buttons.forEach(config => {
       const button = new Button(config, this.config.layout.style.button)
       const renderedButton = button.render()
-      renderedButton.addEventListener("click", () => this.onButtonClick(button.code))
+      if (!this.config.listenMode) {
+        renderedButton.addEventListener("click", () => this.onButtonClick(button.code))
+      }
       this.renderedButtons.push(button)
       this.rendered.appendChild(renderedButton)
     })

@@ -14,6 +14,7 @@ const writeText = (text: string, isBackspace: boolean): void => {
 }
 
 const keyboard = new Keyboard({
+  listenMode: true,
   layout: DefaultKeyboardLayout(
     (code: string, content: string, isBackspace = false): void => writeText(content, isBackspace)
   ),

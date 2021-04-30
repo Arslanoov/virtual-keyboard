@@ -2,6 +2,7 @@
 export interface KeyboardConfig {
   width?: string,
   height?: string,
+  listenMode?: boolean,
   layout: KeyboardLayoutInterface
 }
 

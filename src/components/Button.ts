@@ -52,6 +52,7 @@ class Button {
       throw new Error("Button is not rendered")
     }
 
+    /* TODO: Settings */
     addStyles(this.element, {
       background: "blue"
     })
