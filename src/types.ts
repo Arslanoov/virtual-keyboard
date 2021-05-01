@@ -17,7 +17,11 @@ export interface KeyboardLayoutButtonInterface {
   isCtrlKey?: boolean,
   isMetaKey?: boolean,
   isBackspace?: boolean,
-  isTab?: boolean
+  isTab?: boolean,
+  isCaps?: boolean,
+  isEnter?: boolean,
+  isSpace?: boolean,
+  isAlt?: boolean
 }
 
 export interface KeyboardButtonStyle {
@@ -46,5 +50,11 @@ export interface KeyboardLayoutInterface {
   rowGap: string,
   buttons: KeyboardLayoutButtonInterface[],
   style: KeyboardLayoutStyle,
-  onButtonClick: (code: string, content: string, isBackspace: boolean, isTab: boolean) => void
+  onButtonClick: (
+    code: string,
+    content: string,
+    isBackspace: boolean,
+    isTab: boolean,
+    isEnter: boolean
+  ) => void
 }

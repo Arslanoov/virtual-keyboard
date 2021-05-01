@@ -2,7 +2,7 @@ import "./index.scss"
 
 import Keyboard, { DefaultKeyboardLayout } from "../src/index"
 
-const writeText = (code: string, content: string, isBackspace: boolean, isTab: boolean): void => {
+const writeText = (code: string, content: string, isBackspace: boolean, isTab: boolean, isEnter: boolean): void => {
   const textElement = document.querySelector("#text") as HTMLElement
   if (textElement) {
     if (isBackspace) {
@@ -12,6 +12,11 @@ const writeText = (code: string, content: string, isBackspace: boolean, isTab: b
 
     if (isTab) {
       textElement.innerText += `    `
+      return
+    }
+
+    if (isEnter) {
+      textElement.innerText += "\n"
       return
     }
 

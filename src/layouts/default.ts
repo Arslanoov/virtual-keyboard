@@ -1,7 +1,7 @@
 import { KeyboardLayoutInterface } from "../types"
 
 const DefaultKeyboardLayout = (
-  onPress: (code: string, content: string, isBackspace: boolean, isTab: boolean) => void
+  onPress: (code: string, content: string, isBackspace: boolean, isTab: boolean, isEnter: boolean) => void
 ): KeyboardLayoutInterface => {
   return {
     columnsCount: 15,
@@ -251,6 +251,114 @@ const DefaultKeyboardLayout = (
         rowPosition: 2,
         code: "Backslash",
         content: "\\"
+      },
+
+      // Row 3
+      {
+        columnSize: 2,
+        rowSize: 1,
+        columnPosition: 1,
+        rowPosition: 3,
+        code: "CapsLock",
+        content: "CAPS",
+        isCaps: true
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 3,
+        rowPosition: 3,
+        code: "KeyA",
+        content: "A"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 4,
+        rowPosition: 3,
+        code: "KeyS",
+        content: "S"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 5,
+        rowPosition: 3,
+        code: "KeyD",
+        content: "D"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 6,
+        rowPosition: 3,
+        code: "KeyF",
+        content: "F"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 7,
+        rowPosition: 3,
+        code: "KeyG",
+        content: "G"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 8,
+        rowPosition: 3,
+        code: "KeyH",
+        content: "H"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 9,
+        rowPosition: 3,
+        code: "KeyJ",
+        content: "J"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 10,
+        rowPosition: 3,
+        code: "KeyK",
+        content: "K"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 11,
+        rowPosition: 3,
+        code: "KeyL",
+        content: "L"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 12,
+        rowPosition: 3,
+        code: "Semicolon",
+        content: ";"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 13,
+        rowPosition: 3,
+        code: "Quote",
+        content: "'"
+      },
+      {
+        columnSize: 2,
+        rowSize: 1,
+        columnPosition: 14,
+        rowPosition: 3,
+        code: "Enter",
+        content: "ENTER",
+        isEnter: true
       }
     ]
   }
