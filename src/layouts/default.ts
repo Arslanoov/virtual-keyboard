@@ -7,8 +7,10 @@ const DefaultKeyboardLayout = (
     isBackspace: boolean,
     isTab: boolean,
     isEnter: boolean,
-    isSpace: boolean
-  ) => void
+    isSpace: boolean,
+    isShift: boolean
+  ) => void = () => {},
+  additionalSettings: Partial<KeyboardLayoutInterface> = {}
 ): KeyboardLayoutInterface => {
   return {
     columnsCount: 15,
@@ -29,7 +31,9 @@ const DefaultKeyboardLayout = (
         minHeight: "50px",
         background: "#78e2aa",
         border: "1px solid #a1ebc4",
-        borderRadius: "5px"
+        borderRadius: "5px",
+        pressDuration: 150,
+        pressBackground: "blue"
       }
     },
     buttons: [
@@ -40,7 +44,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 1,
         rowPosition: 1,
         code: "Backquote",
-        content: "`"
+        content: "`",
+        shiftContent: "~"
       },
       {
         columnSize: 1,
@@ -48,7 +53,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 2,
         rowPosition: 1,
         code: "Digit1",
-        content: "1"
+        content: "1",
+        shiftContent: "!"
       },
       {
         columnSize: 1,
@@ -56,7 +62,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 3,
         rowPosition: 1,
         code: "Digit2",
-        content: "2"
+        content: "2",
+        shiftContent: "@"
       },
       {
         columnSize: 1,
@@ -64,7 +71,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 4,
         rowPosition: 1,
         code: "Digit3",
-        content: "3"
+        content: "3",
+        shiftContent: "#"
       },
       {
         columnSize: 1,
@@ -72,7 +80,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 5,
         rowPosition: 1,
         code: "Digit4",
-        content: "4"
+        content: "4",
+        shiftContent: "$"
       },
       {
         columnSize: 1,
@@ -80,7 +89,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 6,
         rowPosition: 1,
         code: "Digit5",
-        content: "5"
+        content: "5",
+        shiftContent: "%"
       },
       {
         columnSize: 1,
@@ -88,7 +98,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 7,
         rowPosition: 1,
         code: "Digit6",
-        content: "6"
+        content: "6",
+        shiftContent: "^"
       },
       {
         columnSize: 1,
@@ -96,7 +107,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 8,
         rowPosition: 1,
         code: "Digit7",
-        content: "7"
+        content: "7",
+        shiftContent: "7"
       },
       {
         columnSize: 1,
@@ -104,7 +116,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 9,
         rowPosition: 1,
         code: "Digit8",
-        content: "8"
+        content: "8",
+        shiftContent: "*"
       },
       {
         columnSize: 1,
@@ -112,7 +125,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 10,
         rowPosition: 1,
         code: "Digit9",
-        content: "9"
+        content: "9",
+        shiftContent: "("
       },
       {
         columnSize: 1,
@@ -120,7 +134,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 11,
         rowPosition: 1,
         code: "Digit0",
-        content: "0"
+        content: "0",
+        shiftContent: ")"
       },
       {
         columnSize: 1,
@@ -128,7 +143,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 12,
         rowPosition: 1,
         code: "Minus",
-        content: "-"
+        content: "-",
+        shiftContent: "_"
       },
       {
         columnSize: 1,
@@ -136,7 +152,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 13,
         rowPosition: 1,
         code: "Equal",
-        content: "="
+        content: "=",
+        shiftContent: "+"
       },
       {
         columnSize: 2,
@@ -244,7 +261,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 13,
         rowPosition: 2,
         code: "BracketLeft",
-        content: "["
+        content: "[",
+        shiftContent: "{"
       },
       {
         columnSize: 1,
@@ -252,7 +270,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 14,
         rowPosition: 2,
         code: "BracketRight",
-        content: "]"
+        content: "]",
+        shiftContent: "}"
       },
       {
         columnSize: 1,
@@ -260,7 +279,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 15,
         rowPosition: 2,
         code: "Backslash",
-        content: "\\"
+        content: "\\",
+        shiftContent: "|"
       },
 
       // Row 3
@@ -351,7 +371,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 12,
         rowPosition: 3,
         code: "Semicolon",
-        content: ";"
+        content: ";",
+        shiftContent: ":"
       },
       {
         columnSize: 1,
@@ -359,7 +380,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 13,
         rowPosition: 3,
         code: "Quote",
-        content: "'"
+        content: "'",
+        shiftContent: "\""
       },
       {
         columnSize: 2,
@@ -443,7 +465,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 11,
         rowPosition: 4,
         code: "Comma",
-        content: ","
+        content: ",",
+        shiftContent: "<"
       },
       {
         columnSize: 1,
@@ -451,7 +474,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 12,
         rowPosition: 4,
         code: "Period",
-        content: "."
+        content: ".",
+        shiftContent: ">"
       },
       {
         columnSize: 1,
@@ -459,7 +483,8 @@ const DefaultKeyboardLayout = (
         columnPosition: 13,
         rowPosition: 4,
         code: "Slash",
-        content: "/"
+        content: "/",
+        shiftContent: "?"
       },
       {
         columnSize: 2,
@@ -479,10 +504,10 @@ const DefaultKeyboardLayout = (
         rowPosition: 5,
         code: "Space",
         content: "",
-        justify: "center",
         isSpace: true
       },
-    ]
+    ],
+    ...additionalSettings
   }
 }
 

@@ -8,7 +8,8 @@ const writeText = (
   isBackspace: boolean,
   isTab: boolean,
   isEnter: boolean,
-  isSpace: boolean
+  isSpace: boolean,
+  isShift: boolean
 ): void => {
   const textElement = document.querySelector("#text") as HTMLElement
   if (textElement) {
@@ -32,12 +33,18 @@ const writeText = (
       return
     }
 
+    if (isShift) return
+
     textElement.innerText += content
   }
 }
 
 const keyboard = new Keyboard({
-  layout: DefaultKeyboardLayout(writeText),
+  layout: DefaultKeyboardLayout(writeText, {
+    additionalStyles: {
+      maxWidth: "1350px"
+    }
+  }),
   width: "100%"
 })
 

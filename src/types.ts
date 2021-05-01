@@ -16,7 +16,7 @@ export interface KeyboardLayoutButtonInterface {
   rowPosition: number,
   code: string,
   content: string,
-  justify?: string,
+  shiftContent?: string,
   isCtrlKey?: boolean,
   isMetaKey?: boolean,
   isBackspace?: boolean,
@@ -33,7 +33,9 @@ export interface KeyboardButtonStyle {
   minHeight: string,
   background?: string,
   border: string,
-  borderRadius: string
+  borderRadius: string,
+  pressDuration: number,
+  pressBackground: string
 }
 
 export interface KeyboardLayoutStyle {
@@ -61,6 +63,7 @@ export interface KeyboardLayoutInterface {
     isBackspace: boolean,
     isTab: boolean,
     isEnter: boolean,
-    isSpace: boolean
+    isSpace: boolean,
+    isShift: boolean
   ) => void
 }

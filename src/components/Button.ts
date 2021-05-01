@@ -22,8 +22,12 @@ class Button {
     return this.config.code
   }
 
-  public get content(): string {
+  public get content(): string  {
     return this.config.content
+  }
+
+  public get shiftContent(): string | null {
+    return this.config.shiftContent ?? null
   }
 
   public get isBackspace(): boolean {
@@ -64,10 +68,10 @@ class Button {
     }
   }
 
-  public render(): HTMLElement {
+  public render(withShift = false): HTMLElement {
     const buttonElement = document.createElement("div")
     buttonElement.classList.add("a-virtual-keyboard__button")
-    buttonElement.innerText = this.config.content
+    buttonElement.innerText = withShift ? this.config.shiftContent || this.config.content : this.config.content
 
     addStyles(buttonElement, {
       gridColumn: `${this.config.columnPosition} / span ${this.config.columnSize}`,
@@ -88,14 +92,20 @@ class Button {
       throw new Error("Button is not rendered")
     }
 
-    /* TODO: Settings */
-    addStyles(this.element, {
-      background: "blue"
-    })
+    this.push()
+    window.setTimeout(() => this.unPush(), this.style.pressDuration)
+  }
 
-    window.setTimeout(() => addStyles(this.element as HTMLElement, {
+  public push(): void {
+    addStyles(this.element as HTMLElement, {
+      background: this.style.pressBackground
+    })
+  }
+
+  public unPush(): void {
+    addStyles(this.element as HTMLElement, {
       background: this.style.background
-    }), 150)
+    })
   }
 }
 
