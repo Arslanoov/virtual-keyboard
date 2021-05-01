@@ -27,6 +27,16 @@ class Keyboard {
     this.renderLayout()
     this.renderButtons()
     document.addEventListener("keydown", this.onButtonAction(undefined))
+    document.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.shiftKey) {
+        this.enableShiftMode(e.code)
+      }
+    })
+    document.addEventListener("keyup", (e: KeyboardEvent) => {
+      if (e.code === "ShiftRight" || e.code === "ShiftLeft") {
+        this.disableShiftMode(e.code)
+      }
+    })
   }
 
   public mount(selector: string): void {
@@ -61,6 +71,26 @@ class Keyboard {
     })
   }
 
+  private enableShiftMode(shiftCode: string): void {
+    this.renderedButtons.forEach(button => {
+      if (button.isShift && shiftCode === button.code) {
+        button.push()
+      }
+    })
+    this.enableCapsMode()
+  }
+
+  private disableShiftMode(shiftCode: string): void {
+    this.renderedButtons.forEach(button => {
+      if (button.isShift && shiftCode === button.code) {
+        button.unPush()
+      }
+    })
+    if (this.capsMode) {
+      this.disableCapsMode()
+    }
+  }
+
   private onButtonAction(code?: string): (e?: KeyboardEvent | MouseEvent) => void {
     return (e?: KeyboardEvent | MouseEvent) => {
       let keyCode = code
@@ -77,7 +107,9 @@ class Keyboard {
           return
         }
 
-        button.press()
+        if (!button.isShift) {
+          button.press()
+        }
 
         if (e instanceof KeyboardEvent && e?.key && (isNaN(parseFloat(e.key)) || !isFinite(e.key as unknown as number))) {
           if (e?.key === button.content.toLowerCase()) {
@@ -89,13 +121,19 @@ class Keyboard {
           }
         }
 
+        let content = button.content
+        if (e?.shiftKey && button.shiftContent) {
+          content = button.shiftContent
+        }
+
         this.config.layout.onButtonClick(
           button.code,
-          button.content,
+          content,
           button.isBackspace,
           button.isTab,
           button.isEnter,
-          button.isSpace
+          button.isSpace,
+          button.isShift
         )
       }
     }
@@ -106,23 +144,23 @@ class Keyboard {
     this.rerenderButtons()
   }
 
-  private disableCapsMode(): void {
-    if (this.capsMode) {
-      this.capsMode = false
-      this.rerenderButtons()
-    }
-  }
-
   private enableCapsMode(): void {
     if (!this.capsMode) {
       this.capsMode = true
-      this.rerenderButtons()
+      this.rerenderButtons(false, true)
     }
   }
 
-  private rerenderButtons(): void {
+  private disableCapsMode(): void {
+    if (this.capsMode) {
+      this.capsMode = false
+      this.rerenderButtons(false)
+    }
+  }
+
+  private rerenderButtons(pressCaps = true, withShift = false): void {
     this.destroyButtons()
-    this.renderButtons(true)
+    this.renderButtons(pressCaps, withShift)
   }
 
   private destroyButtons(): void {
@@ -131,12 +169,12 @@ class Keyboard {
     this.rendered.innerHTML = ""
   }
 
-  private renderButtons(pressCaps = false): void {
+  private renderButtons(pressCaps = false, withShift = false): void {
     this.config.layout.buttons.forEach(config => {
       const button = new Button(config, this.config.layout.style.button)
       button.toggleCase(this.capsMode)
 
-      const renderedButton = button.render()
+      const renderedButton = button.render(withShift)
       if (!this.config.listenMode) {
         const onClick = this.onButtonAction(button.code)
         button.setHandler(onClick)

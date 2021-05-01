@@ -8,7 +8,8 @@ const writeText = (
   isBackspace: boolean,
   isTab: boolean,
   isEnter: boolean,
-  isSpace: boolean
+  isSpace: boolean,
+  isShift: boolean
 ): void => {
   const textElement = document.querySelector("#text") as HTMLElement
   if (textElement) {
@@ -31,6 +32,8 @@ const writeText = (
       textElement.innerText += " "
       return
     }
+
+    if (isShift) return
 
     textElement.innerText += content
   }
