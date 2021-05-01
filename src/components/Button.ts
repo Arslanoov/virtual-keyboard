@@ -92,14 +92,13 @@ class Button {
       throw new Error("Button is not rendered")
     }
 
-    /* TODO: Settings */
     this.push()
-    window.setTimeout(() => this.unPush(), 150)
+    window.setTimeout(() => this.unPush(), this.style.pressDuration)
   }
 
   public push(): void {
     addStyles(this.element as HTMLElement, {
-      background: "blue"
+      background: this.style.pressBackground
     })
   }
 

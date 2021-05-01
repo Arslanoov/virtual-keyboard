@@ -33,7 +33,9 @@ export interface KeyboardButtonStyle {
   minHeight: string,
   background?: string,
   border: string,
-  borderRadius: string
+  borderRadius: string,
+  pressDuration: number,
+  pressBackground: string
 }
 
 export interface KeyboardLayoutStyle {

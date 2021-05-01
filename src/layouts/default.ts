@@ -30,7 +30,9 @@ const DefaultKeyboardLayout = (
         minHeight: "50px",
         background: "#78e2aa",
         border: "1px solid #a1ebc4",
-        borderRadius: "5px"
+        borderRadius: "5px",
+        pressDuration: 150,
+        pressBackground: "blue"
       }
     },
     buttons: [
