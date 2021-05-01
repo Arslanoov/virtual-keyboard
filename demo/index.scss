@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 html,
 body {
@@ -9,7 +9,7 @@ body {
 body {
   box-sizing: border-box;
 
-  font-family: "New Tegomin", serif;
+  font-family: "Roboto", sans-serif;
 }
 
 * {
@@ -18,4 +18,8 @@ body {
 
 #app {
   font-size: 18px;
+}
+
+#text {
+  white-space: pre;
 }

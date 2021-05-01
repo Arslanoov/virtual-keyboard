@@ -5,8 +5,8 @@ import Button from "./Button"
 
 class Keyboard {
   private config: KeyboardConfig
-  private readonly rendered: HTMLElement
   private renderedButtons: Button[]
+  private readonly rendered: HTMLElement
 
   constructor(config: KeyboardConfig) {
     this.config = config
@@ -57,19 +57,12 @@ class Keyboard {
     })
   }
 
-  private onButtonClick(code: string): void {
-    this.onButtonAction(code)
-  }
-
-  private onButtonPress(e: KeyboardEvent): void {
-    this.onButtonAction(e.code)
-  }
-
-  private onButtonAction(code: string): void {
+  private onButtonAction(code: string, e?: KeyboardEvent): void {
     const button = this.renderedButtons.find(button => button.code === code)
     if (button) {
+      e?.preventDefault()
       button.press()
-      this.config.layout.onButtonClick(button.code, button.content, button.isBackspace)
+      this.config.layout.onButtonClick(button.code, button.content, button.isBackspace, button.isTab)
     }
   }
 
@@ -78,13 +71,13 @@ class Keyboard {
       const button = new Button(config, this.config.layout.style.button)
       const renderedButton = button.render()
       if (!this.config.listenMode) {
-        renderedButton.addEventListener("click", () => this.onButtonClick(button.code))
+        renderedButton.addEventListener("click", () => this.onButtonAction(button.code))
       }
       this.renderedButtons.push(button)
       this.rendered.appendChild(renderedButton)
     })
 
-    document.addEventListener("keydown", e => this.onButtonPress(e))
+    document.addEventListener("keydown", e => this.onButtonAction(e.code, e))
   }
 }
 

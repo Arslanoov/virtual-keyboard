@@ -28,6 +28,10 @@ class Button {
     return this.config.isBackspace ?? false
   }
 
+  public get isTab(): boolean {
+    return this.config.isTab ?? false
+  }
+
   public render(): HTMLElement {
     const buttonElement = document.createElement("div")
     buttonElement.classList.add("a-virtual-keyboard__button")
