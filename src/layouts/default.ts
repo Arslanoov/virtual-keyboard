@@ -9,7 +9,8 @@ const DefaultKeyboardLayout = (
     isEnter: boolean,
     isSpace: boolean,
     isShift: boolean
-  ) => void
+  ) => void = () => {},
+  additionalSettings: Partial<KeyboardLayoutInterface> = {}
 ): KeyboardLayoutInterface => {
   return {
     columnsCount: 15,
@@ -505,7 +506,8 @@ const DefaultKeyboardLayout = (
         content: "",
         isSpace: true
       },
-    ]
+    ],
+    ...additionalSettings
   }
 }
 

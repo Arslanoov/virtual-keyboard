@@ -40,7 +40,11 @@ const writeText = (
 }
 
 const keyboard = new Keyboard({
-  layout: DefaultKeyboardLayout(writeText),
+  layout: DefaultKeyboardLayout(writeText, {
+    additionalStyles: {
+      maxWidth: "1350px"
+    }
+  }),
   width: "100%"
 })
 
