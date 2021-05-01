@@ -56,7 +56,8 @@ class Keyboard {
       borderBottom: this.config.layout.style.borderBottom,
       borderLeft: this.config.layout.style.borderLeft,
       borderRight: this.config.layout.style.borderRight,
-      border: this.config.layout.style.border
+      border: this.config.layout.style.border,
+      ...this.config.layout.additionalStyles
     })
   }
 

@@ -1,3 +1,5 @@
+import * as CSS from "csstype"
+
 // Keyboard
 export interface KeyboardConfig {
   width?: string,
@@ -14,6 +16,7 @@ export interface KeyboardLayoutButtonInterface {
   rowPosition: number,
   code: string,
   content: string,
+  justify?: string,
   isCtrlKey?: boolean,
   isMetaKey?: boolean,
   isBackspace?: boolean,
@@ -21,6 +24,7 @@ export interface KeyboardLayoutButtonInterface {
   isCaps?: boolean,
   isEnter?: boolean,
   isSpace?: boolean,
+  isShift?: boolean,
   isAlt?: boolean
 }
 
@@ -50,6 +54,7 @@ export interface KeyboardLayoutInterface {
   rowGap: string,
   buttons: KeyboardLayoutButtonInterface[],
   style: KeyboardLayoutStyle,
+  additionalStyles?: CSS.Properties,
   onButtonClick: (
     code: string,
     content: string,

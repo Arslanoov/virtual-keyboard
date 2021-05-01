@@ -17,9 +17,21 @@ body {
 }
 
 #app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > * {
+    margin-top: 20px;
+  }
+}
+
+#keyboard {
   font-size: 18px;
 }
 
 #text {
   white-space: pre;
+
+  font-size: 22px;
 }

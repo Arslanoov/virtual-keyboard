@@ -7,7 +7,10 @@ const DefaultKeyboardLayout = (
     columnsCount: 15,
     rowsCount: 5,
     columnGap: "5px",
-    rowGap: "5px",
+    rowGap: "8px",
+    additionalStyles: {
+      maxWidth: "1300px"
+    },
     onButtonClick: onPress,
     style: {
       padding: "10px",
@@ -15,7 +18,7 @@ const DefaultKeyboardLayout = (
       borderTop: "1px solid #7acffb",
       borderBottom: "1px solid #49a9db",
       button: {
-        minWidth: "50px",
+        minWidth: "35px",
         minHeight: "50px",
         background: "#78e2aa",
         border: "1px solid #a1ebc4",
@@ -359,7 +362,119 @@ const DefaultKeyboardLayout = (
         code: "Enter",
         content: "ENTER",
         isEnter: true
-      }
+      },
+
+      // Row 4
+      {
+        columnSize: 3,
+        rowSize: 1,
+        columnPosition: 1,
+        rowPosition: 4,
+        code: "ShiftLeft",
+        content: "SHIFT",
+        isShift: true
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 4,
+        rowPosition: 4,
+        code: "KeyZ",
+        content: "Z"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 5,
+        rowPosition: 4,
+        code: "KeyX",
+        content: "X"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 6,
+        rowPosition: 4,
+        code: "KeyC",
+        content: "C"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 7,
+        rowPosition: 4,
+        code: "KeyV",
+        content: "V"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 8,
+        rowPosition: 4,
+        code: "KeyB",
+        content: "B"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 9,
+        rowPosition: 4,
+        code: "KeyN",
+        content: "N"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 10,
+        rowPosition: 4,
+        code: "KeyM",
+        content: "M"
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 11,
+        rowPosition: 4,
+        code: "Comma",
+        content: ","
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 12,
+        rowPosition: 4,
+        code: "Period",
+        content: "."
+      },
+      {
+        columnSize: 1,
+        rowSize: 1,
+        columnPosition: 13,
+        rowPosition: 4,
+        code: "Slash",
+        content: "/"
+      },
+      {
+        columnSize: 2,
+        rowSize: 1,
+        columnPosition: 14,
+        rowPosition: 4,
+        code: "ShiftRight",
+        content: "SHIFT",
+        isShift: true
+      },
+
+      // Row 5
+      {
+        columnSize: 8,
+        rowSize: 1,
+        columnPosition: 5,
+        rowPosition: 5,
+        code: "Space",
+        content: "",
+        justify: "center",
+        isSpace: true
+      },
     ]
   }
 }
