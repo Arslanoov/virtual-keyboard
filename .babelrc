@@ -6,10 +6,7 @@
           "ie >= 11"
         ]
       }
-    }]
-  ],
-  "plugins": [
-    ["@babel/plugin-proposal-class-properties"],
-    ["@babel/plugin-transform-typescript"]
+    }],
+    "@babel/typescript"
   ]
 }
