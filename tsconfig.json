@@ -2,7 +2,7 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "outDir": "build/types",
-    "module": "es6",
+    "module": "amd",
     "target": "es6",
     "allowJs": true,
     "sourceMap": true,

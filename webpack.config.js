@@ -12,7 +12,7 @@ module.exports = {
     filename: "index.js",
     path: path.resolve(__dirname, "build"),
     library: "simple-virtual-keyboard",
-    libraryTarget: "commonjs2"
+    libraryTarget: "amd"
   },
   resolve: {
     extensions: [".ts", ".js"]
