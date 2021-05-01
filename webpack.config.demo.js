@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
+  mode: "development",
   entry: path.resolve(__dirname, "demo", "index.ts"),
 
   plugins: [
@@ -45,7 +46,6 @@ module.exports = {
     host: "0.0.0.0",
     port: 8088,
     hot: true,
-    inline: true,
-    writeToDisk: true
+    inline: true
   }
 }
