@@ -5,15 +5,14 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 
 module.exports = {
   mode: "production",
-
   entry: path.resolve(__dirname, "src", "index.ts"),
   target: "es5",
 
   output: {
-    filename: "[name].js",
-    path: path.resolve(__dirname, "dist"),
+    filename: "index.js",
+    path: path.resolve(__dirname, "build"),
     library: "simple-virtual-keyboard",
-    libraryTarget: "commonjs2"
+    libraryTarget: "amd"
   },
   resolve: {
     extensions: [".ts", ".js"]
