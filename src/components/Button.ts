@@ -8,12 +8,14 @@ import {
 class Button {
   private config: KeyboardLayoutButtonInterface
   private style: KeyboardButtonStyle
-  private element: HTMLElement | null
+  public element: HTMLElement | null
+  public handler: (() => void) | null
 
   constructor(config: KeyboardLayoutButtonInterface, style: KeyboardButtonStyle) {
     this.config = config
     this.style = style
     this.element = null
+    this.handler = null
   }
 
   public get code(): string {
@@ -26,6 +28,40 @@ class Button {
 
   public get isBackspace(): boolean {
     return this.config.isBackspace ?? false
+  }
+
+  public get isTab(): boolean {
+    return this.config.isTab ?? false
+  }
+
+  public get isCaps(): boolean {
+    return this.config.isCaps ?? false
+  }
+
+  public get isEnter(): boolean {
+    return this.config.isEnter ?? false
+  }
+
+  public get isShift(): boolean {
+    return this.config.isShift ?? false
+  }
+
+  public get isSpace(): boolean {
+    return this.config.isSpace ?? false
+  }
+
+  public get isMeta(): boolean {
+    return this.isBackspace || this.isTab || this.isCaps || this.isEnter || this.isShift || this.isSpace
+  }
+
+  public setHandler(handler: () => void): void {
+    this.handler = handler
+  }
+
+  public toggleCase(capsMode: boolean): void {
+    if (!this.isMeta) {
+      this.config.content = capsMode ? this.content.toUpperCase() : this.content.toLowerCase()
+    }
   }
 
   public render(): HTMLElement {
@@ -52,6 +88,7 @@ class Button {
       throw new Error("Button is not rendered")
     }
 
+    /* TODO: Settings */
     addStyles(this.element, {
       background: "blue"
     })

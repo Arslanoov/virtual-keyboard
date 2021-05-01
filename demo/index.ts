@@ -2,21 +2,42 @@ import "./index.scss"
 
 import Keyboard, { DefaultKeyboardLayout } from "../src/index"
 
-const writeText = (text: string, isBackspace: boolean): void => {
-  const textElement = document.querySelector("#text")
+const writeText = (
+  code: string,
+  content: string,
+  isBackspace: boolean,
+  isTab: boolean,
+  isEnter: boolean,
+  isSpace: boolean
+): void => {
+  const textElement = document.querySelector("#text") as HTMLElement
   if (textElement) {
     if (isBackspace) {
-      (textElement as HTMLElement).innerText = (textElement as HTMLElement).innerText.slice(0, -1)
-    } else {
-      (textElement as HTMLElement).innerText += text
+      textElement.innerText = textElement.innerText.slice(0, -1)
+      return
     }
+
+    if (isTab) {
+      textElement.innerText += `    `
+      return
+    }
+
+    if (isEnter) {
+      textElement.innerText += "\n"
+      return
+    }
+
+    if (isSpace) {
+      textElement.innerText += " "
+      return
+    }
+
+    textElement.innerText += content
   }
 }
 
 const keyboard = new Keyboard({
-  layout: DefaultKeyboardLayout(
-    (code: string, content: string, isBackspace = false): void => writeText(content, isBackspace)
-  ),
+  layout: DefaultKeyboardLayout(writeText),
   width: "100%"
 })
 
