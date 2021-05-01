@@ -12,7 +12,7 @@ module.exports = {
     filename: "index.js",
     path: path.resolve(__dirname, "build"),
     library: "simple-virtual-keyboard",
-    libraryTarget: "amd"
+    libraryTarget: "commonjs2"
   },
   resolve: {
     extensions: [".ts", ".js"]
@@ -41,7 +41,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "main-[hash:8].css",
+      filename: "main.css",
     }),
     new CleanWebpackPlugin()
   ]
