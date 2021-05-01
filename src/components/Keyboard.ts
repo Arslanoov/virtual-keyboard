@@ -79,6 +79,16 @@ class Keyboard {
 
         button.press()
 
+        if (e instanceof KeyboardEvent && e?.key && (isNaN(parseFloat(e.key)) || !isFinite(e.key as unknown as number))) {
+          if (e?.key === button.content.toLowerCase()) {
+            this.disableCapsMode()
+          }
+
+          if (e?.key === button.content.toUpperCase()) {
+            this.enableCapsMode()
+          }
+        }
+
         this.config.layout.onButtonClick(
           button.code,
           button.content,
@@ -96,6 +106,20 @@ class Keyboard {
     this.rerenderButtons()
   }
 
+  private disableCapsMode(): void {
+    if (this.capsMode) {
+      this.capsMode = false
+      this.rerenderButtons()
+    }
+  }
+
+  private enableCapsMode(): void {
+    if (!this.capsMode) {
+      this.capsMode = true
+      this.rerenderButtons()
+    }
+  }
+
   private rerenderButtons(): void {
     this.destroyButtons()
     this.renderButtons(true)
@@ -103,6 +127,7 @@ class Keyboard {
 
   private destroyButtons(): void {
     this.renderedButtons.map(button => button.element?.removeEventListener("click", button.handler as () => void))
+    this.renderedButtons = []
     this.rendered.innerHTML = ""
   }
 

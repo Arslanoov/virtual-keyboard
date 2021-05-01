@@ -479,7 +479,6 @@ const DefaultKeyboardLayout = (
         rowPosition: 5,
         code: "Space",
         content: "",
-        justify: "center",
         isSpace: true
       },
     ]

@@ -16,7 +16,6 @@ export interface KeyboardLayoutButtonInterface {
   rowPosition: number,
   code: string,
   content: string,
-  justify?: string,
   isCtrlKey?: boolean,
   isMetaKey?: boolean,
   isBackspace?: boolean,
