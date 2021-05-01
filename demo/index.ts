@@ -1,7 +1,6 @@
 import "./index.scss"
 
-import Keyboard , { DefaultKeyboardLayout } from "../src/index"
-import "../src/styles/index.scss"
+import Keyboard, { DefaultKeyboardLayout } from "../src/index"
 
 const writeText = (
   code: string,

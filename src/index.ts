@@ -1,3 +1,5 @@
+import "./styles/index.scss"
+
 import Keyboard from "./components/Keyboard"
 import { DefaultKeyboardLayout } from "./layouts/default"
 
