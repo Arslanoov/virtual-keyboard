@@ -60,6 +60,7 @@ export interface KeyboardLayoutInterface {
     content: string,
     isBackspace: boolean,
     isTab: boolean,
-    isEnter: boolean
+    isEnter: boolean,
+    isSpace: boolean
   ) => void
 }

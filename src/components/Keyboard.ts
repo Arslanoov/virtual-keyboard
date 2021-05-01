@@ -84,7 +84,8 @@ class Keyboard {
           button.content,
           button.isBackspace,
           button.isTab,
-          button.isEnter
+          button.isEnter,
+          button.isSpace
         )
       }
     }

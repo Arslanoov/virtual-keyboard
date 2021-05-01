@@ -46,8 +46,12 @@ class Button {
     return this.config.isShift ?? false
   }
 
+  public get isSpace(): boolean {
+    return this.config.isSpace ?? false
+  }
+
   public get isMeta(): boolean {
-    return this.isBackspace || this.isTab || this.isCaps || this.isEnter || this.isShift
+    return this.isBackspace || this.isTab || this.isCaps || this.isEnter || this.isShift || this.isSpace
   }
 
   public setHandler(handler: () => void): void {

@@ -1,7 +1,14 @@
 import { KeyboardLayoutInterface } from "../types"
 
 const DefaultKeyboardLayout = (
-  onPress: (code: string, content: string, isBackspace: boolean, isTab: boolean, isEnter: boolean) => void
+  onPress: (
+    code: string,
+    content: string,
+    isBackspace: boolean,
+    isTab: boolean,
+    isEnter: boolean,
+    isSpace: boolean
+  ) => void
 ): KeyboardLayoutInterface => {
   return {
     columnsCount: 15,
