@@ -1,11 +1,19 @@
-import { KeyboardConfig } from "../types";
+import { KeyboardConfig, KeyboardLayoutInterface } from "../types";
 declare class Keyboard {
+    private readonly rendered;
+    private readonly languages;
     private config;
+    private currentLanguageIndex;
     private renderedButtons;
     private capsMode;
-    private readonly rendered;
-    constructor(config: KeyboardConfig);
+    constructor(config: KeyboardConfig, languages?: KeyboardLayoutInterface[]);
+    get layout(): KeyboardLayoutInterface;
+    addLanguage(layout: KeyboardLayoutInterface): void;
+    changeLanguage(): void;
     init(): void;
+    initKeyDown(): void;
+    initShiftChange(): void;
+    initLanguageChange(): void;
     mount(selector: string): void;
     destroy(): void;
     private renderLayout;
