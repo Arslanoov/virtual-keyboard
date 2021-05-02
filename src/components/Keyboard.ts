@@ -1,20 +1,37 @@
-import { KeyboardConfig } from "../types"
+import { KeyboardConfig, KeyboardLayoutInterface } from "../types"
 import { addStyles } from "../helpers/styles"
 
 import Button from "./Button"
 
 class Keyboard {
+  private readonly rendered: HTMLElement
+  private readonly languages: KeyboardLayoutInterface[]
   private config: KeyboardConfig
+  private currentLanguageIndex: number
   private renderedButtons: Button[]
   private capsMode: boolean
-  private readonly rendered: HTMLElement
 
-  constructor(config: KeyboardConfig) {
+  constructor(config: KeyboardConfig, languages: KeyboardLayoutInterface[] = []) {
+    this.languages = [config.layout].concat(languages)
     this.config = config
+    this.currentLanguageIndex = 0
     this.rendered = document.createElement("div")
     this.renderedButtons = []
     this.capsMode = false
     this.init()
+  }
+
+  public get layout(): KeyboardLayoutInterface {
+    return this.languages[this.currentLanguageIndex % this.languages.length]
+  }
+
+  public addLanguage(layout: KeyboardLayoutInterface): void {
+    this.languages.push(layout)
+  }
+
+  public changeLanguage(): void {
+    this.currentLanguageIndex++
+    this.rerenderButtons(this.capsMode)
   }
 
   public init(): void {
@@ -26,15 +43,33 @@ class Keyboard {
 
     this.renderLayout()
     this.renderButtons()
+    this.initKeyDown()
+    this.initShiftChange()
+    this.initLanguageChange()
+  }
+
+  public initKeyDown(): void {
     document.addEventListener("keydown", this.onButtonAction(undefined))
+  }
+
+  public initShiftChange(): void {
     document.addEventListener("keydown", (e: KeyboardEvent) => {
       if (e.shiftKey) {
         this.enableShiftMode(e.code)
       }
     })
+
     document.addEventListener("keyup", (e: KeyboardEvent) => {
       if (e.code === "ShiftRight" || e.code === "ShiftLeft") {
         this.disableShiftMode(e.code)
+      }
+    })
+  }
+
+  public initLanguageChange(): void {
+    window.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.altKey) {
+        this.changeLanguage()
       }
     })
   }
@@ -55,19 +90,19 @@ class Keyboard {
     addStyles(this.rendered, {
       display: "grid",
       gridTemplateColumns:
-        `repeat(${this.config.layout.columnsCount}, minmax(${this.config.layout.style.button.minWidth}, 1fr))`,
+        `repeat(${this.layout.columnsCount}, minmax(${this.layout.style.button.minWidth}, 1fr))`,
       gridTemplateRows:
-        `repeat(${this.config.layout.rowsCount}, minmax(${this.config.layout.style.button.minHeight}, 1fr))`,
-      rowGap: this.config.layout.rowGap,
-      columnGap: this.config.layout.columnGap,
-      padding: this.config.layout.style.padding,
-      background: this.config.layout.style.background,
-      borderTop: this.config.layout.style.borderTop,
-      borderBottom: this.config.layout.style.borderBottom,
-      borderLeft: this.config.layout.style.borderLeft,
-      borderRight: this.config.layout.style.borderRight,
-      border: this.config.layout.style.border,
-      ...this.config.layout.additionalStyles
+        `repeat(${this.layout.rowsCount}, minmax(${this.layout.style.button.minHeight}, 1fr))`,
+      rowGap: this.layout.rowGap,
+      columnGap: this.layout.columnGap,
+      padding: this.layout.style.padding,
+      background: this.layout.style.background,
+      borderTop: this.layout.style.borderTop,
+      borderBottom: this.layout.style.borderBottom,
+      borderLeft: this.layout.style.borderLeft,
+      borderRight: this.layout.style.borderRight,
+      border: this.layout.style.border,
+      ...this.layout.additionalStyles
     })
   }
 
@@ -86,6 +121,7 @@ class Keyboard {
         button.unPush()
       }
     })
+
     if (this.capsMode) {
       this.disableCapsMode()
     }
@@ -111,7 +147,11 @@ class Keyboard {
           button.press()
         }
 
-        if (e instanceof KeyboardEvent && e?.key && (isNaN(parseFloat(e.key)) || !isFinite(e.key as unknown as number))) {
+        if (
+          e instanceof KeyboardEvent &&
+          button.content.toLowerCase() !== button.content.toUpperCase() &&
+          !button.isMeta
+        ) {
           if (e?.key === button.content.toLowerCase()) {
             this.disableCapsMode()
           }
@@ -126,7 +166,7 @@ class Keyboard {
           content = button.shiftContent
         }
 
-        this.config.layout.onButtonClick(
+        this.layout.onButtonClick(
           button.code,
           content,
           button.isBackspace,
@@ -170,8 +210,8 @@ class Keyboard {
   }
 
   private renderButtons(pressCaps = false, withShift = false): void {
-    this.config.layout.buttons.forEach(config => {
-      const button = new Button(config, this.config.layout.style.button)
+    this.layout.buttons.forEach(config => {
+      const button = new Button(config, this.layout.style.button)
       button.toggleCase(this.capsMode)
 
       const renderedButton = button.render(withShift)
