@@ -68,7 +68,7 @@ class Keyboard {
 
   public initLanguageChange(): void {
     window.addEventListener("keydown", (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.code === "Space") {
+      if (e.ctrlKey && e.altKey) {
         this.changeLanguage()
       }
     })

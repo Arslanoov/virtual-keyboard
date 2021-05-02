@@ -182,7 +182,7 @@ const RussianLanguage = (
         columnPosition: 3,
         rowPosition: 2,
         code: "KeyQ",
-        content: "Q"
+        content: "Й"
       },
       {
         columnSize: 1,
@@ -190,7 +190,7 @@ const RussianLanguage = (
         columnPosition: 4,
         rowPosition: 2,
         code: "KeyW",
-        content: "W"
+        content: "Ц"
       },
       {
         columnSize: 1,
@@ -198,7 +198,7 @@ const RussianLanguage = (
         columnPosition: 5,
         rowPosition: 2,
         code: "KeyE",
-        content: "E"
+        content: "У"
       },
       {
         columnSize: 1,
@@ -206,7 +206,7 @@ const RussianLanguage = (
         columnPosition: 6,
         rowPosition: 2,
         code: "KeyR",
-        content: "R"
+        content: "К"
       },
       {
         columnSize: 1,
@@ -214,7 +214,7 @@ const RussianLanguage = (
         columnPosition: 7,
         rowPosition: 2,
         code: "KeyT",
-        content: "T"
+        content: "Е"
       },
       {
         columnSize: 1,
@@ -222,7 +222,7 @@ const RussianLanguage = (
         columnPosition: 8,
         rowPosition: 2,
         code: "KeyY",
-        content: "Y"
+        content: "Н"
       },
       {
         columnSize: 1,
@@ -230,7 +230,7 @@ const RussianLanguage = (
         columnPosition: 9,
         rowPosition: 2,
         code: "KeyU",
-        content: "U"
+        content: "Г"
       },
       {
         columnSize: 1,
@@ -238,7 +238,7 @@ const RussianLanguage = (
         columnPosition: 10,
         rowPosition: 2,
         code: "KeyI",
-        content: "I"
+        content: "Ш"
       },
       {
         columnSize: 1,
@@ -246,7 +246,7 @@ const RussianLanguage = (
         columnPosition: 11,
         rowPosition: 2,
         code: "KeyO",
-        content: "O"
+        content: "Щ"
       },
       {
         columnSize: 1,
@@ -254,7 +254,7 @@ const RussianLanguage = (
         columnPosition: 12,
         rowPosition: 2,
         code: "KeyP",
-        content: "P"
+        content: "З"
       },
       {
         columnSize: 1,
@@ -262,8 +262,7 @@ const RussianLanguage = (
         columnPosition: 13,
         rowPosition: 2,
         code: "BracketLeft",
-        content: "[",
-        shiftContent: "{"
+        content: "Х"
       },
       {
         columnSize: 1,
@@ -271,8 +270,7 @@ const RussianLanguage = (
         columnPosition: 14,
         rowPosition: 2,
         code: "BracketRight",
-        content: "]",
-        shiftContent: "}"
+        content: "Ъ"
       },
       {
         columnSize: 1,
@@ -281,7 +279,7 @@ const RussianLanguage = (
         rowPosition: 2,
         code: "Backslash",
         content: "\\",
-        shiftContent: "|"
+        shiftContent: "/"
       },
 
       // Row 3
@@ -300,7 +298,7 @@ const RussianLanguage = (
         columnPosition: 3,
         rowPosition: 3,
         code: "KeyA",
-        content: "A"
+        content: "Ф"
       },
       {
         columnSize: 1,
@@ -308,7 +306,7 @@ const RussianLanguage = (
         columnPosition: 4,
         rowPosition: 3,
         code: "KeyS",
-        content: "S"
+        content: "Ы"
       },
       {
         columnSize: 1,
@@ -316,7 +314,7 @@ const RussianLanguage = (
         columnPosition: 5,
         rowPosition: 3,
         code: "KeyD",
-        content: "D"
+        content: "В"
       },
       {
         columnSize: 1,
@@ -324,7 +322,7 @@ const RussianLanguage = (
         columnPosition: 6,
         rowPosition: 3,
         code: "KeyF",
-        content: "F"
+        content: "А"
       },
       {
         columnSize: 1,
@@ -332,7 +330,7 @@ const RussianLanguage = (
         columnPosition: 7,
         rowPosition: 3,
         code: "KeyG",
-        content: "G"
+        content: "П"
       },
       {
         columnSize: 1,
@@ -340,7 +338,7 @@ const RussianLanguage = (
         columnPosition: 8,
         rowPosition: 3,
         code: "KeyH",
-        content: "H"
+        content: "Р"
       },
       {
         columnSize: 1,
@@ -348,7 +346,7 @@ const RussianLanguage = (
         columnPosition: 9,
         rowPosition: 3,
         code: "KeyJ",
-        content: "J"
+        content: "О"
       },
       {
         columnSize: 1,
@@ -356,7 +354,7 @@ const RussianLanguage = (
         columnPosition: 10,
         rowPosition: 3,
         code: "KeyK",
-        content: "K"
+        content: "Л"
       },
       {
         columnSize: 1,
@@ -364,7 +362,7 @@ const RussianLanguage = (
         columnPosition: 11,
         rowPosition: 3,
         code: "KeyL",
-        content: "L"
+        content: "Д"
       },
       {
         columnSize: 1,
@@ -372,8 +370,7 @@ const RussianLanguage = (
         columnPosition: 12,
         rowPosition: 3,
         code: "Semicolon",
-        content: ";",
-        shiftContent: ":"
+        content: "Ж"
       },
       {
         columnSize: 1,
@@ -381,8 +378,7 @@ const RussianLanguage = (
         columnPosition: 13,
         rowPosition: 3,
         code: "Quote",
-        content: "'",
-        shiftContent: "\""
+        content: "Э"
       },
       {
         columnSize: 2,
@@ -410,7 +406,7 @@ const RussianLanguage = (
         columnPosition: 4,
         rowPosition: 4,
         code: "KeyZ",
-        content: "Z"
+        content: "Я"
       },
       {
         columnSize: 1,
@@ -418,7 +414,7 @@ const RussianLanguage = (
         columnPosition: 5,
         rowPosition: 4,
         code: "KeyX",
-        content: "X"
+        content: "Ч"
       },
       {
         columnSize: 1,
@@ -426,7 +422,7 @@ const RussianLanguage = (
         columnPosition: 6,
         rowPosition: 4,
         code: "KeyC",
-        content: "C"
+        content: "С"
       },
       {
         columnSize: 1,
@@ -434,7 +430,7 @@ const RussianLanguage = (
         columnPosition: 7,
         rowPosition: 4,
         code: "KeyV",
-        content: "V"
+        content: "М"
       },
       {
         columnSize: 1,
@@ -442,7 +438,7 @@ const RussianLanguage = (
         columnPosition: 8,
         rowPosition: 4,
         code: "KeyB",
-        content: "B"
+        content: "И"
       },
       {
         columnSize: 1,
@@ -450,7 +446,7 @@ const RussianLanguage = (
         columnPosition: 9,
         rowPosition: 4,
         code: "KeyN",
-        content: "N"
+        content: "Т"
       },
       {
         columnSize: 1,
@@ -458,7 +454,7 @@ const RussianLanguage = (
         columnPosition: 10,
         rowPosition: 4,
         code: "KeyM",
-        content: "M"
+        content: "Ь"
       },
       {
         columnSize: 1,
@@ -466,8 +462,7 @@ const RussianLanguage = (
         columnPosition: 11,
         rowPosition: 4,
         code: "Comma",
-        content: ",",
-        shiftContent: "<"
+        content: "Б"
       },
       {
         columnSize: 1,
@@ -475,8 +470,7 @@ const RussianLanguage = (
         columnPosition: 12,
         rowPosition: 4,
         code: "Period",
-        content: ".",
-        shiftContent: ">"
+        content: "Ю"
       },
       {
         columnSize: 1,
@@ -484,8 +478,8 @@ const RussianLanguage = (
         columnPosition: 13,
         rowPosition: 4,
         code: "Slash",
-        content: "/",
-        shiftContent: "?"
+        content: ".",
+        shiftContent: ","
       },
       {
         columnSize: 2,
