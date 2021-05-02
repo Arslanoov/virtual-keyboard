@@ -1,6 +1,7 @@
 import "./index.scss"
 
-import Keyboard, { DefaultKeyboardLayout } from "../src/index"
+import Keyboard, { DefaultKeyboardLayout, RussianLanguage } from "../src/index"
+import {KeyboardLayoutInterface} from "../src/types";
 
 const writeText = (
   code: string,
@@ -39,14 +40,20 @@ const writeText = (
   }
 }
 
+const layoutConfig: Partial<KeyboardLayoutInterface> = {
+  additionalStyles: {
+    maxWidth: "1350px"
+  }
+}
+
 const keyboard = new Keyboard({
-  layout: DefaultKeyboardLayout(writeText, {
-    additionalStyles: {
-      maxWidth: "1350px"
-    }
-  }),
-  width: "100%"
-})
+  layout: DefaultKeyboardLayout(writeText, layoutConfig),
+    width: "100%"
+  },
+  [
+    RussianLanguage(writeText, layoutConfig)
+  ]
+)
 
 keyboard.mount("#app")
 
