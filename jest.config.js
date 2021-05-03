@@ -12,6 +12,7 @@ module.exports = {
 
   transform: {
     "^.+\\.tsx?$": "ts-jest",
+    ".+\\.(css|sass|scss)$": "jest-transform-stub"
   },
 
   setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],

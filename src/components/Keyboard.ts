@@ -21,6 +21,10 @@ class Keyboard {
     this.init()
   }
 
+  public get languagesList(): KeyboardLayoutInterface[] {
+    return this.languages
+  }
+
   public get layout(): KeyboardLayoutInterface {
     return this.languages[this.currentLanguageIndex % this.languages.length]
   }

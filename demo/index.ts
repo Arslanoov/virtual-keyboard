@@ -1,7 +1,7 @@
 import "./index.scss"
 
 import Keyboard, { DefaultKeyboardLayout, RussianLanguage } from "../src/index"
-import {KeyboardLayoutInterface} from "../src/types";
+import { KeyboardLayoutInterface } from "../src/types"
 
 const writeText = (
   code: string,
