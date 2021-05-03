@@ -7,6 +7,7 @@ declare class Keyboard {
     private renderedButtons;
     private capsMode;
     constructor(config: KeyboardConfig, languages?: KeyboardLayoutInterface[]);
+    get languagesList(): KeyboardLayoutInterface[];
     get layout(): KeyboardLayoutInterface;
     addLanguage(layout: KeyboardLayoutInterface): void;
     changeLanguage(): void;
