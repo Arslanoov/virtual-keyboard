@@ -1,7 +1,5 @@
 import { KeyboardLayoutInterface } from "../../types"
 
-import { DefaultKeyboardLayout } from "../default"
-
 const RussianLanguage = (
   onPress: (
     code: string,

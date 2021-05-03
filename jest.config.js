@@ -2,7 +2,7 @@ module.exports = {
   roots: ["<rootDir>/tests"],
 
   preset: "ts-jest",
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
 
   globals: {
     "ts-jest": {
@@ -12,6 +12,7 @@ module.exports = {
 
   transform: {
     "^.+\\.tsx?$": "ts-jest",
+    ".+\\.(css|sass|scss)$": "jest-transform-stub"
   },
 
   setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
